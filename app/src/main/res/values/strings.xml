@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DicodingEvent</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">UpComing</string>
+    <string name="title_notifications">Finish</string>
+    <string name="name_event">Nama</string>
+    <string name="event_name">Nama Event\n</string>
+    <string name="event_summary">Event Summary\n</string>
+    <string name="event_time">waktu Event\n</string>
+    <string name="operator">Operator</string>
+    <string name="remaining_quota">Sisa Kuota</string>
+    <string name="description">Deskripsi</string>
+    <string name="Event_photo">Foto Event</string>
+    <string name="selengkapnya">Selengkapnya</string>
+</resources>
