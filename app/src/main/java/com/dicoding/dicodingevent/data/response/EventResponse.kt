@@ -1,9 +1,16 @@
 package com.dicoding.dicodingevent.data.response
 
+import com.google.gson.annotations.SerializedName
+
 data class EventResponse(
-	val listEvents: List<ListEventsItem?>? = null,
-	val error: Boolean? = null,
-	val message: String? = null
+    @field:SerializedName("listEvents")
+    val listEvents: List<ListEventsItem?>? = null,
+
+    @field:SerializedName("error")
+    val error: Boolean? = null,
+
+    @field:SerializedName("message")
+    val message: String? = null
 )
 
 

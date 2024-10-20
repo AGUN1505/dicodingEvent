@@ -5,27 +5,29 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.dicodingevent.R
+import com.dicoding.dicodingevent.data.local.entity.EventEntity
 import com.dicoding.dicodingevent.databinding.ActivityDetailBinding
-
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
-    private lateinit var detailViewModel: DetailViewModel
+    private val detailViewModel: DetailViewModel by viewModels {
+        DetailViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        detailViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -35,8 +37,37 @@ class DetailActivity : AppCompatActivity() {
         val idEvent = intent.getIntExtra("EVENT_ID", 0)
         val finishEvent = intent.getBooleanExtra("FINISH_EVENT", false)
         getDetailEvent(idEvent, finishEvent)
+        setupFavoriteButton(idEvent.toString())
 
         supportActionBar?.title = "Detail Event"
+    }
+
+    @Suppress("NAME_SHADOWING")
+    private fun setupFavoriteButton(idEvent: String) {
+        detailViewModel.getFavoriteEvent(idEvent).observe(this) { event ->
+            val isFavorite = event != null
+            binding.favoriteActionButton.setImageResource(
+                if (isFavorite) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
+            )
+
+            binding.favoriteActionButton.setOnClickListener {
+                if (isFavorite) {
+                    detailViewModel.deleteFavoriteById(idEvent)
+                } else {
+                    val event = detailViewModel.detailEvent.value
+                    if (event?.name != null && event.mediaCover != null) {
+                        detailViewModel.insertFavorite(
+                            EventEntity(
+                                idEvent,
+                                event.name,
+                                event.mediaCover
+                            )
+                        )
+                        Toast.makeText(this, "Added To favorite", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

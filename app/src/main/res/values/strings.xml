@@ -3,6 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">UpComing</string>
     <string name="title_notifications">Finish</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>>
     <string name="name_event">Nama</string>
     <string name="event_name">Nama Event\n</string>
     <string name="event_summary">Event Summary\n</string>
@@ -12,4 +14,9 @@
     <string name="description">Deskripsi</string>
     <string name="Event_photo">Foto Event</string>
     <string name="selengkapnya">Selengkapnya</string>
+    <string name="mode">Dark Mode</string>
+    <string name="notifikasi">NotifMe</string>
+    <string name="paporit">Paporit</string>
+    <string name="favorite_event">Event Favorite\n</string>
+    <string name="nope">Tidak ada favorite event\n</string>
 </resources>

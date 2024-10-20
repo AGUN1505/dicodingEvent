@@ -21,31 +21,27 @@ class FinishAdapter(private val onItemClick: (ListEventsItem) -> Unit) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
-        holder.itemView.setOnClickListener{onItemClick(event)}
+        holder.itemView.setOnClickListener { onItemClick(event) }
     }
 
     class MyViewHolder(private val binding: ItemRowFinishBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(event: ListEventsItem) {
             binding.tvItemNameFinish.text = event.name
-            Glide.with(itemView.context)
-                .load(event.imageLogo)
-                .into(binding.imgItemPhotoFinish)
+            Glide.with(itemView.context).load(event.imageLogo).into(binding.imgItemPhotoFinish)
         }
     }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
             override fun areItemsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: ListEventsItem, newItem: ListEventsItem
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: ListEventsItem, newItem: ListEventsItem
             ): Boolean {
                 return oldItem == newItem
             }

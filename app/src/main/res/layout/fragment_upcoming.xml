@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view_upcoming"
         app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/item_row_event" />
+        tools:listitem="@layout/item_row_finish" />
 
     <ProgressBar
         android:id="@+id/progressBar"

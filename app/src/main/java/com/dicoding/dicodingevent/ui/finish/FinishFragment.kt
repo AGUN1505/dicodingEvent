@@ -5,18 +5,20 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.dicodingevent.ui.detail.DetailActivity
 import com.dicoding.dicodingevent.data.adapter.FinishAdapter
 import com.dicoding.dicodingevent.databinding.FragmentFinishBinding
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 
 class FinishFragment : Fragment() {
 
     private var _binding: FragmentFinishBinding? = null
     private val binding get() = _binding!!
-    private lateinit var finishViewModel: FinishViewModel
+    private val finishViewModel: FinishViewModel by viewModels {
+        FinishViewModelFactory.getInstance()
+    }
     private lateinit var finishAdapter: FinishAdapter
 
     override fun onCreateView(
@@ -29,13 +31,11 @@ class FinishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        finishViewModel = ViewModelProvider(this)[FinishViewModel::class.java]
-
-        finishViewModel.isLoading.observe(viewLifecycleOwner) {
+        finishViewModel.getIsLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
 
-        finishViewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+        finishViewModel.getErrorMessage.observe(viewLifecycleOwner) { message ->
             binding.progressBar.visibility = View.GONE
             message?.let {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
@@ -52,6 +52,9 @@ class FinishFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    finishViewModel.findFinish()
+                }
                 return false
             }
         })
@@ -74,7 +77,7 @@ class FinishFragment : Fragment() {
     }
 
     private fun observeEvent() {
-        finishViewModel.finish.observe(viewLifecycleOwner) { events ->
+        finishViewModel.getFinish.observe(viewLifecycleOwner) { events ->
             finishAdapter.submitList(events)
             binding.progressBar.visibility = View.GONE
         }

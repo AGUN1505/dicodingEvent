@@ -14,10 +14,11 @@
         <ImageView
             android:id="@+id/img_item_photo"
             android:layout_width="match_parent"
-            android:contentDescription="@string/Event_photo"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:contentDescription="@string/Event_photo"
             android:scaleType="center"
+            tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView

@@ -21,31 +21,27 @@ class UpcomingAdapter(private val onItemClick: (ListEventsItem) -> Unit) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val review = getItem(position)
         holder.bind(review)
-        holder.itemView.setOnClickListener{ onItemClick(review)}
+        holder.itemView.setOnClickListener { onItemClick(review) }
     }
 
     class MyViewHolder(private val binding: ItemRowEventBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(event: ListEventsItem) {
             binding.tvItemName.text = event.name
-            Glide.with(itemView.context)
-                .load(event.mediaCover)
-                .into(binding.imgItemPhoto)
+            Glide.with(itemView.context).load(event.mediaCover).into(binding.imgItemPhoto)
         }
     }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
             override fun areItemsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: ListEventsItem, newItem: ListEventsItem
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: ListEventsItem, newItem: ListEventsItem
             ): Boolean {
                 return oldItem == newItem
             }

@@ -30,20 +30,20 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="12dp"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/Event_photo"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:src="@tools:sample/avatars"
-            app:layout_constraintTop_toBottomOf="@id/event_name" />
+            app:layout_constraintTop_toBottomOf="@id/event_name"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/event_summary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="@string/event_summary"
             android:textSize="16sp"
@@ -122,14 +122,32 @@
             android:id="@+id/browser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/selengkapnya"
             android:layout_marginTop="62dp"
+            android:text="@string/selengkapnya"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/description"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favoriteActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:clickable="true"
+            android:contentDescription="@string/paporit"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/media_cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/baseline_favorite_border_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

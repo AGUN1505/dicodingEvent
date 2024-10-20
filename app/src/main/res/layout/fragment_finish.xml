@@ -7,7 +7,7 @@
     tools:context=".ui.finish.FinishFragment">
 
     <SearchView
-        android:id="@+id/search_view_finished"
+        android:id="@+id/searchViewFinished"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view_finished"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewFinished"
         tools:listitem="@layout/item_row_finish" />
 
     <ProgressBar
