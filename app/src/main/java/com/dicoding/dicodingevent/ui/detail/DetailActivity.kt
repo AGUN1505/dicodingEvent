@@ -16,10 +16,11 @@ import com.bumptech.glide.Glide
 import com.dicoding.dicodingevent.R
 import com.dicoding.dicodingevent.data.local.entity.EventEntity
 import com.dicoding.dicodingevent.databinding.ActivityDetailBinding
+import com.dicoding.dicodingevent.ui.favorite.FavoriteViewModel
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
-    private val detailViewModel: DetailViewModel by viewModels {
+    private val detailViewModel: FavoriteViewModel by viewModels {
         DetailViewModelFactory.getInstance(this)
     }
 

@@ -59,7 +59,7 @@ class FinishFragment : Fragment() {
             }
         })
 
-        finishViewModel.findFinish()
+//        finishViewModel.findFinish()
 
     }
 

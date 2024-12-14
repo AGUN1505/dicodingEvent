@@ -48,7 +48,7 @@
         android:id="@+id/rv_upcoming"
         android:layout_width="358dp"
         android:layout_height="242dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +62,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/title_notifications"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/title_notifications"
+        app:layout_constraintEnd_toStartOf="@+id/kanan"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/kiri"
         app:layout_constraintTop_toBottomOf="@+id/rv_upcoming" />
 
